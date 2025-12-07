@@ -1,7 +1,7 @@
 import os
 import cv2
 
-# 1. Define paths
+# 1. Definir les chemins 
 input_base_path = r"C:\Users\callu\Projet PULMONAR"
 output_base_path = r"C:\Users\callu\Projet PULMONAR_Preprocessed" # New folder location
 
@@ -9,28 +9,28 @@ categories = [ "Pneumonia-Bacterial"]
 IMG_SIZE = 224
 
 def create_preprocessed_dataset():
-    # Create the main output directory if it doesn't exist
+    # Creation d'un output si il n'existe pas
     if not os.path.exists(output_base_path):
         os.makedirs(output_base_path)
         print(f"Created new directory: {output_base_path}")
 
     for category in categories:
-        # Define input and output paths for this specific category
+        # Définition de l'input et de l'outpu
         path_in = os.path.join(input_base_path, category)
         path_out = os.path.join(output_base_path, category)
         
-        # Create the sub-folder (e.g., .../COVID-19) in the output directory
+        # Création des souss dossiers COVID 19...
         if not os.path.exists(path_out):
             os.makedirs(path_out)
 
-        # Check if input path exists
+        # Vérification l'existence de l'input
         if not os.path.exists(path_in):
             print(f"Skipping {category}, folder not found.")
             continue
 
         print(f"Processing {category}...")
         
-        # Process images
+        # Normalissation
         count = 0
         for img_name in os.listdir(path_in):
             try:
@@ -41,10 +41,9 @@ def create_preprocessed_dataset():
                 if img_array is None:
                     continue
 
-                # Resize (We keep it 0-255 here so we can save it as an image)
                 new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
 
-                # Save to the new output folder
+                # Sauvegarde au dossier de l'output
                 save_path = os.path.join(path_out, img_name)
                 cv2.imwrite(save_path, new_array)
                 count += 1
@@ -56,4 +55,5 @@ def create_preprocessed_dataset():
 
 if __name__ == "__main__":
     create_preprocessed_dataset()
+
     print("\nDone! Your resized images are in 'Projet PULMONAR_Preprocessed'.")
