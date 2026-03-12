@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+  background: #ffffff;
+}
+
+/* Le conteneur principal qui prend tout l'écran */
+.main-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Le fond animé */
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Le contenu interactif par-dessus */
+.content-layer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #1a1a1a;
+}
+
+/* La carte en verre (Glassmorphism) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(173, 216, 230, 0.5);
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(100, 150, 200, 0.15);
+  width: 450px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-zone {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  padding: 30px 20px;
+
+  border: 2px dashed rgba(100, 160, 220, 0.4);
+  border-radius: 12px;
+  background: rgba(220, 235, 250, 0.3);
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Garde l'effet de survol */
+.upload-zone:hover, .upload-zone.dragging {
+  border-color: #5ba3e6;
+  background: rgba(180, 210, 245, 0.35);
+  box-shadow: 0 0 15px rgba(100, 160, 220, 0.2);
+  transform: scale(1.02);
+}
+
+.preview-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 15px 0;
+  border: 1px solid #5ba3e6;
+}
+
+.result-box {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.result-good { color: #1a8a1a; border: 1px solid #1a8a1a; }
+.result-bad { color: #cc2222; border: 1px solid #cc2222; }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }

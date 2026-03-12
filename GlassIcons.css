@@ -1,0 +1,153 @@
+/* src/GlassIcons.css */
+
+.icon-btns {
+  display: flex;            /* Changé de grid à flex pour centrer */
+  justify-content: center;  /* Centre le bouton */
+  align-items: center;
+  padding: 1em 0;          /* Réduit le padding vertical */
+  overflow: visible;
+}
+
+.icon-btn {
+  background-color: transparent;
+  outline: none;
+  position: relative;
+  width: 4.5em;
+  height: 4.5em;
+  perspective: 24em;
+  transform-style: preserve-3d;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* Pour éviter de cliquer quand c'est désactivé */
+  transition: opacity 0.3s;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none; /* Empêche le hover effect quand désactivé */
+}
+
+.icon-btn__back,
+.icon-btn__label {
+  font-size: 0.8em;
+  font-weight: normal; /* Plus de gras */
+  font-family: 'Times New Roman', serif; /* Style LM Roman 12 */
+  color: #1a1a1a;
+  text-shadow: none;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 2;
+  opacity: 0;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  left: 0;
+  /* Centrage horizontal parfait */
+  margin-left: auto;
+  margin-right: auto;
+  
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.icon-btn__back,
+.icon-btn__front {
+  border-radius: 1.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-btn__back {
+  box-shadow: 0.5em -0.5em 0.75em rgba(100, 160, 220, 0.2);
+  display: block;
+  transform: rotate(15deg);
+  transform-origin: 100% 100%;
+  will-change: transform;
+}
+
+.icon-btn__front {
+  opacity: 1; /* On force la visibilité */
+  
+  /* Style Apple Glass */
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(100, 160, 220, 0.3);
+  box-shadow: 0 4px 30px rgba(100, 150, 200, 0.15);
+  
+  /* Propriétés de structure */
+  border-radius: 1.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transform-origin: 80% 50%;
+  will-change: transform;
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s;
+}
+
+/* Ajustement de l'icône pour qu'elle ressorte bien sur le verre */
+.icon-btn__icon {
+  margin: auto;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(30, 80, 140, 0.9) !important;
+  filter: drop-shadow(0 0 3px rgba(70, 130, 200, 0.3));
+  z-index: 10;
+}
+
+/* Effet au survol pour rendre le verre plus "lumineux" */
+.icon-btn:focus-visible .icon-btn__front,
+.icon-btn:hover .icon-btn__front {
+  transform: translate3d(0, 0, 2em);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(100, 160, 220, 0.3);
+  border-color: rgba(100, 160, 220, 0.5);
+}
+
+/* Animation du Label */
+.icon-btn__label {
+  font-size: 0.8em; /* Un peu plus petit pour être discret */
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: #1a1a1a;
+  text-shadow: none;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 2;
+  opacity: 0;
+  position: absolute;
+  top: 110%; /* Place le texte sous le bouton */
+  right: 0;
+  left: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* HOVER EFFECTS */
+.icon-btn:focus-visible .icon-btn__back,
+.icon-btn:hover .icon-btn__back {
+  transform: rotate(25deg) translate3d(-0.5em, -0.5em, 0.5em);
+}
+
+.icon-btn:focus-visible .icon-btn__front,
+.icon-btn:hover .icon-btn__front {
+  transform: translate3d(0, 0, 2em);
+  box-shadow: 0 0 15px rgba(100, 160, 220, 0.4); /* Glow bleu clair au survol */
+}
+
+.icon-btn:focus-visible .icon-btn__label,
+.icon-btn:hover .icon-btn__label {
+  opacity: 1;
+  transform: translateY(0);
+}
