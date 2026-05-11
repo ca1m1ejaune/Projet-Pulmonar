@@ -1,6 +1,7 @@
 # Projet Pulmonar
 
-![Computer Vision Banner](https://user-images.githubusercontent.com/1111226973/placeholder-banner.png)
+![Computer Vision Banner](<img width="474" height="474" alt="image" src="https://github.com/user-attachments/assets/d8717b19-50f4-4ba4-84da-2db8c944f0b7" />
+)
 *Projet de fin d'étude de Callum Holliday et Antonin Roussillon*
 
 ---
